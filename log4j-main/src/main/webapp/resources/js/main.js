@@ -36,7 +36,7 @@ $("#formAction").submit(function (event) {
                     Swal.fire({
                         icon: 'warning',
                         title: '',
-                        text: 'DIEEEEEEEEEEEEEEE!',})
+                        text: 'Scanned website has found CVE-2011-44228, Please check out latest log4j to update your version!',})
                 }
             }, 100);
 
@@ -46,4 +46,25 @@ $("#formAction").submit(function (event) {
         }
     });
 });
+$(function(){
+    $(".drop")
+        .mouseover(function() {
+            $(".dropdown").show(300);
+        });
+    $(".drop")
+        .mouseleave(function() {
+            $(".dropdown").hide(300);
+        });
+})
+
+$(function(){
+    $(".drop2")
+        .mouseover(function() {
+            $(".dropdown2").show(300);
+        });
+    $(".drop2")
+        .mouseleave(function() {
+            $(".dropdown2").hide(300);
+        });
+})
 

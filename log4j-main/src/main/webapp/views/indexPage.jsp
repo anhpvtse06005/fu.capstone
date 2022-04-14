@@ -9,9 +9,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <div>
   <div class="logo">
     <img src="${pageContext.request.contextPath}/resources/images/u3.png">
+    <nav class="nav">
+      <ul>
+        <li class="drop2"><a href="#">About CVE-2021-44228</a>
+          <ul class="dropdown2">
+            <li><a href="#">Bao 1</a></li>
+            <li><a href="#">Bao 2</a></li>
+          </ul></li>
+        <li class="drop"><a href="#">Latest Log4J</a>
+        <ul class="dropdown">
+          <li><a href="#">Log4J Core</a></li>
+          <li><a href="#">Log4J Api</a></li>
+        </ul>
+      </li>
+        <li><a href="#">About SCANJ</a></li>
+      </ul>
+    </nav>
   </div>
     <div class="s130">
       <form id="formAction" method="POST">
@@ -30,11 +46,11 @@
         </div>
        <!-- <span class="info">ex. Game, Music, Video, Photography</span> -->
       </form>
-      <!-- <div class="rightbottom">
-        <img class="laptop" src="/resources/images/u15.png">
-      </div> -->
+
     </div>
-    <div class="footer">
+
+    <div class="footer" style="display: inline;">
+      <div class="text" style="float: left; width: 50%; margin-left: 2em">
       <p style="font-size: 72px;font-weight: 700;color: #FFFFFF; margin-bottom: 30px;">Critical Impact</p>
       <p style="font-size: 30px;font-weight: 700;color: #FFFFFF">Apache Log4j Remote Code Execution Vulnerability</p>
       <p style="font-size: 20px;font-weight: 700;color: #FFFF00">CVE-2021-44228</p>
@@ -43,6 +59,10 @@
         from 2.0.0 and before 2.15.0. A remote attacker who can control log messages
         
         or log message parameters, can execute arbitrary code on the server via JNDI LDAP endpoint.</p>
+      </div>
+<%--      <div class = "left" style="float: right; width: 40%; text-align: center;">--%>
+<%--        <img src="/resources/images/u1.png"/>--%>
+<%--      </div>--%>
     </div>
   <span class="loader"></span>
     <script src="${pageContext.request.contextPath}/resources/js/extention/choices.js"></script>
