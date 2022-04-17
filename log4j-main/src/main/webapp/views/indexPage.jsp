@@ -20,13 +20,16 @@
       <ul>
         <li class="drop2"><a href="#">About CVE-2021-44228</a>
           <ul class="dropdown2">
-            <li><a target="_blank" href="https://www.upguard.com/blog/apache-log4j-vulnerability">Upguard: Apache Log4J Vulnerability</a></li>
-            <li><a target="_blank" href="https://www.cisecurity.org/log4j-zero-day-vulnerability-response">Cisecurity: Log4J Zero Day</a></li>
-            <li><a target="_blank" href="https://www.thehindubusinessline.com/info-tech/cyber-security-log4j-vulnerability-issue-explained/article38061525.ece">
-              Thehindubisinessline: Cyber Security Log4j</a></li>
+            <li><a target="_blank" href="https://logging.apache.org/log4j/2.x/">Apache Log4J 2</a></li>
+            <li><a target="_blank" href="https://blog.cloudflare.com/inside-the-log4j2-vulnerability-cve-2021-44228/">Inside the Log4j2 vulnerability</a></li>
+            <li><a target="_blank" href="https://www.fastly.com/blog/digging-deeper-into-log4shell-0day-rce-exploit-found-in-log4j">Digging deeper into Log4Shell</a></li>
+            <li><a target="_blank" href="https://raxis.com/blog/log4j-exploit">How to Exploit and Test this Critical Vulnerability</a></li>
           </ul></li>
         <li class="drop"><a href="#">Latest Log4J</a>
         <ul class="dropdown">
+          <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/security/dutch-cybersecurity-agency-warns-of-lingering-log4j-risks/">Warns of lingering Log4j risks</a></li>
+          <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/security/state-hackers-use-new-powershell-backdoor-in-log4j-attacks/">Log4j Attacks</a></li>
+          <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/microsoft/microsoft-defender-log4j-scanner-triggers-false-positive-alerts/">Microsoft Defender Log4j scanner</a></li>
           <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.17.2">Log4J Core</a></li>
           <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.17.2">Log4J Api</a></li>
         </ul>

@@ -73,9 +73,11 @@ function aboutMe(){
         title: '<strong>About ScanJ</strong>',
         icon: 'info',
         html:
-            'This website is created for the purpose of helping ' +
-            'businesses, companies, and individuals to carefully check their website ' +
-            'had log4shell vulnerability or not',
+            'Information technology is developing day by day. Thousands of applications are developed based on the Java programming language every day. With the existing vulnerability, it will be an excellent opportunity for hackers to attack and perform malicious actions on the server. \n' +
+            'Deploy cryptocurrency mining software like xmrig/kinsing\n' +
+            'Ransomware Deployment\n' +
+            'Install Reverse shells\n' +
+            'With the desire to solve the above problems, we learned about how attackers find and exploit vulnerabilities and develop an application on the web interface so that users only need to enter the URL on the location. The position to be scanned is that the application can automatically detect vulnerabilities and warn users to have remedial methods before being exploited by hackers',
         showCloseButton: true,
         confirmButtonText:
             '<i class="fa fa-thumbs-up"></i> Great!',

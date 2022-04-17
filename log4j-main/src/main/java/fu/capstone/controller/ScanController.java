@@ -23,7 +23,7 @@ public class ScanController {
 				return 0;
 			}else if(urlValidator.isValid(web)){
 				boolean check = scanService.scan(web);
-				if(check){
+				if(!check){
 					return 1;
 				}else{
 					return 2;

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class scanServiceImpl implements scanService {
     @Override
     public boolean scan(String web) throws Exception {
-        ProcessBuilder processBuilder =  new ProcessBuilder("python3", resolvePythonScriptPath("log4j-scan.py"),"-u",web);
+        ProcessBuilder processBuilder =  new ProcessBuilder("python", resolvePythonScriptPath("log4j-scan.py"),"-u",web);
 //        processBuilder.redirectErrorStream(true);
 
         Process process = processBuilder.start();
