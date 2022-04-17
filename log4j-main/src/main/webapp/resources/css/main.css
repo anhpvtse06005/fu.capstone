@@ -18,7 +18,9 @@ html {
 body {
   margin: 0;
   background: url("../images/u4.png");
+  background-size: 1980px 1080px;
 }
+
 .logo{
   margin-top: 2em;
   margin-left: 2em;
@@ -1054,7 +1056,7 @@ nav ul li a:focus {
 
 
 nav ul li ul li {
-  min-width: 190px;
+  min-width: 400px;
 }
 
 nav ul li ul li a {

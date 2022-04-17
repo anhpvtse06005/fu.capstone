@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -16,16 +20,18 @@
       <ul>
         <li class="drop2"><a href="#">About CVE-2021-44228</a>
           <ul class="dropdown2">
-            <li><a href="#">Bao 1</a></li>
-            <li><a href="#">Bao 2</a></li>
+            <li><a target="_blank" href="https://www.upguard.com/blog/apache-log4j-vulnerability">Upguard: Apache Log4J Vulnerability</a></li>
+            <li><a target="_blank" href="https://www.cisecurity.org/log4j-zero-day-vulnerability-response">Cisecurity: Log4J Zero Day</a></li>
+            <li><a target="_blank" href="https://www.thehindubusinessline.com/info-tech/cyber-security-log4j-vulnerability-issue-explained/article38061525.ece">
+              Thehindubisinessline: Cyber Security Log4j</a></li>
           </ul></li>
         <li class="drop"><a href="#">Latest Log4J</a>
         <ul class="dropdown">
-          <li><a href="#">Log4J Core</a></li>
-          <li><a href="#">Log4J Api</a></li>
+          <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.17.2">Log4J Core</a></li>
+          <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.17.2">Log4J Api</a></li>
         </ul>
       </li>
-        <li><a href="#">About SCANJ</a></li>
+        <li><a href="#" onclick="aboutMe()">About SCANJ</a></li>
       </ul>
     </nav>
   </div>

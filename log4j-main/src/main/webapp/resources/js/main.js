@@ -26,13 +26,13 @@ $("#formAction").submit(function (event) {
                         timer: 1500,
 
                     })
-                } else if(response == '2'){
+                } else if(response == '1'){
                     Swal.fire({
                         icon: 'success',
                         title: '',
                         text: 'Targets do not seem to be vulnerable!',
                     })
-                }else if(response == '1'){
+                }else if(response == '2'){
                     Swal.fire({
                         icon: 'warning',
                         title: '',
@@ -67,4 +67,28 @@ $(function(){
             $(".dropdown2").hide(300);
         });
 })
+
+function aboutMe(){
+    Swal.fire({
+        title: '<strong>About ScanJ</strong>',
+        icon: 'info',
+        html:
+            'This website is created for the purpose of helping ' +
+            'businesses, companies, and individuals to carefully check their website ' +
+            'had log4shell vulnerability or not',
+        showCloseButton: true,
+        confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+            '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+}
 
