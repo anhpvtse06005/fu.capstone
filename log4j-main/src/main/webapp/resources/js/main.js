@@ -34,9 +34,15 @@ $("#formAction").submit(function (event) {
                     })
                 }else if(response == '2'){
                     Swal.fire({
+                        title: '<strong style="color: red">WARNING </strong>',
                         icon: 'warning',
-                        title: '',
-                        text: 'Scanned website has found CVE-2011-44228, Please check out latest log4j to update your version!',})
+                        html:
+                        '<p>Scanned website has found CVE-2021-44228!!!</p> ' +
+                        '<p>Please check out latest Log4j to update version </p>' +
+                        '<p><a href="https://logging.apache.org/log4j/2.x/download.html" target="_blank">https://logging.apache.org/log4j/2.x/download.html</a> </p>'
+                        // title: '',
+                        // text: 'Scanned website has found CVE-2021-44228, Please check out latest log4j to update your version!',
+                        })
                 }
             }, 100);
 
@@ -68,29 +74,50 @@ $(function(){
         });
 })
 
-function aboutMe(){
-    Swal.fire({
-        title: '<strong>About ScanJ</strong>',
-        icon: 'info',
-        html:
-            'Information technology is developing day by day. Thousands of applications are developed based on the Java programming language every day. With the existing vulnerability, it will be an excellent opportunity for hackers to attack and perform malicious actions on the server. \n' +
-            'Deploy cryptocurrency mining software like xmrig/kinsing\n' +
-            'Ransomware Deployment\n' +
-            'Install Reverse shells\n' +
-            'With the desire to solve the above problems, we learned about how attackers find and exploit vulnerabilities and develop an application on the web interface so that users only need to enter the URL on the location. The position to be scanned is that the application can automatically detect vulnerabilities and warn users to have remedial methods before being exploited by hackers',
-        showCloseButton: true,
-        confirmButtonText:
-            '<i class="fa fa-thumbs-up"></i> Great!',
-        confirmButtonAriaLabel: 'Thumbs up, great!',
-        cancelButtonText:
-            '<i class="fa fa-thumbs-down"></i>',
-        cancelButtonAriaLabel: 'Thumbs down',
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    })
+
+// When the user clicks the button, open the modal
+function aboutMe() {
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
 }
+
+// When the user clicks on <span> (x), close the modal
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+    console.log("CLOSE")
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// function aboutMe(){
+//     Swal.fire({
+//         title: '<strong>About ScanJ</strong>',
+//         icon: 'info',
+//         html:
+//             'This website is created for the purpose of helping ' +
+//             'businesses, companies, and individuals to carefully check their website ' +
+//             'had log4shell vulnerability or not',
+//         showCloseButton: true,
+//         confirmButtonText:
+//             '<i class="fa fa-thumbs-up"></i> Great!',
+//         confirmButtonAriaLabel: 'Thumbs up, great!',
+//         cancelButtonText:
+//             '<i class="fa fa-thumbs-down"></i>',
+//         cancelButtonAriaLabel: 'Thumbs down',
+//         showClass: {
+//             popup: 'animate__animated animate__fadeInDown'
+//         },
+//         hideClass: {
+//             popup: 'animate__animated animate__fadeOutUp'
+//         }
+//     })
+// }
 

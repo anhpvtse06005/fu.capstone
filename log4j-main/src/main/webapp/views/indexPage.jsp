@@ -26,12 +26,11 @@
             <li><a target="_blank" href="https://raxis.com/blog/log4j-exploit">How to Exploit and Test this Critical Vulnerability</a></li>
           </ul></li>
         <li class="drop"><a href="#">Latest Log4J</a>
-        <ul class="dropdown">
-          <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/security/dutch-cybersecurity-agency-warns-of-lingering-log4j-risks/">Warns of lingering Log4j risks</a></li>
-          <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/security/state-hackers-use-new-powershell-backdoor-in-log4j-attacks/">Log4j Attacks</a></li>
-          <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/microsoft/microsoft-defender-log4j-scanner-triggers-false-positive-alerts/">Microsoft Defender Log4j scanner</a></li>
-          <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.17.2">Log4J Core</a></li>
-          <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.17.2">Log4J Api</a></li>
+          <ul class="dropdown">
+            <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/security/dutch-cybersecurity-agency-warns-of-lingering-log4j-risks/">Warns of lingering Log4j risks</a></li>
+            <li style="min-width: 150px;"><a target="_blank" href="https://www.bleepingcomputer.com/news/security/state-hackers-use-new-powershell-backdoor-in-log4j-attacks/">Log4j Attacks</a></li>
+            <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.17.2">Log4J Core</a></li>
+            <li style="min-width: 150px;"><a target="_blank" href="https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.17.2">Log4J Api</a></li>
         </ul>
       </li>
         <li><a href="#" onclick="aboutMe()">About SCANJ</a></li>
@@ -72,6 +71,23 @@
 <%--      <div class = "left" style="float: right; width: 40%; text-align: center;">--%>
 <%--        <img src="/resources/images/u1.png"/>--%>
 <%--      </div>--%>
+    </div>
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close()">&times;</span>
+          <p style="font-size: 38px;font-weight: 700;text-align: center;">ABOUT SCANJ</p>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 22px">Information technology is developing day by day. Thousands of applications are developed based on the Java programming language every day. With the existing vulnerability, it will be an excellent opportunity for hackers to attack and perform malicious actions on the server.
+          <p style="font-size: 22px">Deploy cryptocurrency mining software like xmrig/kinsing</p>
+          <p style="font-size: 22px"> Ransomware Deployment</p>
+          <p style="font-size: 22px"> Install Reverse shells</p>
+          <p style="font-size: 22px"> With the desire to solve the above problems, we learned about how attackers find and exploit vulnerabilities and develop an application on the web interface so that users only need to enter the URL on the location. The position to be scanned is that the application can automatically detect vulnerabilities and warn users to have remedial methods before being exploited by hackers</p>
+        </div>
+      </div>
     </div>
   <span class="loader"></span>
     <script src="${pageContext.request.contextPath}/resources/js/extention/choices.js"></script>

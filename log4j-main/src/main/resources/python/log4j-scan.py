@@ -32,9 +32,9 @@ except Exception:
     pass
 
 
-cprint('[•] CVE-2021-44228 - Apache Log4j RCE Scanner', "green")
-cprint('[•] Scanner provided by FullHunt.io - The Next-Gen Attack Surface Management Platform.', "yellow")
-cprint('[•] Secure your External Attack Surface with FullHunt.io.', "yellow")
+# cprint('[•] CVE-2021-44228 - Apache Log4j RCE Scanner', "green")
+# cprint('[•] Scanner provided by FullHunt.io - The Next-Gen Attack Surface Management Platform.', "yellow")
+# cprint('[•] Secure your External Attack Surface with FullHunt.io.', "yellow")
 
 if len(sys.argv) <= 1:
     print('\n%s -h for help.' % (sys.argv[0]))
