@@ -38,9 +38,9 @@ public class scanServiceImpl implements scanService {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-//        ProcessBuilder processBuilder = new ProcessBuilder("python",resolvePythonScriptPath("log4j-scan.py"),"-u http://60a0-58-186-52-181.ngrok.io/api/test/testAccess");
+        ProcessBuilder processBuilder = new ProcessBuilder("python",resolvePythonScriptPath("log4j-scan.py"),"-u http://60a0-58-186-52-181.ngrok.io/api/test/testAccess");
 //        ProcessBuilder processBuilder = new ProcessBuilder("pip3", "install","-r",resolvePythonScriptPath("requirements.txt"));
-        ProcessBuilder processBuilder = new ProcessBuilder("python3", resolvePythonScriptPath("log4j-scan.py"),"-u","http://60a0-58-186-52-181.ngrok.io/api/test/testAccess");
+//        ProcessBuilder processBuilder = new ProcessBuilder("python3", resolvePythonScriptPath("log4j-scan.py"),"-u","http://60a0-58-186-52-181.ngrok.io/api/test/testAccess");
 
 //        processBuilder.redirectErrorStream(true);
 

